@@ -24,6 +24,7 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
   <script src="https://kit.fontawesome.com/33b2190c74.js" crossorigin="anonymous"></script>
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> -->
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
@@ -419,8 +420,40 @@
 
     <!-- ======= Publications Section ======= -->
     <section id="publications" class="portfolio section-bg">
-      <div class="container" data-aos="fade-up">
+      <script>
+        // Open publications.csv
+        // var csv is the CSV file with headers
+        function readCSVFile(){
+          var file = "/assets/publications.csv";
+          var reader = new FileReader();
+          reader.onload = function(e) {
+            var text = reader.result;
+            var data = text.split("\n");
 
+            for (var i = 0; i < data.length; i++) {
+              if (i == 0) {
+                var header = data[i].split(",");
+              }
+              row = data[i].split(",");
+              for (var j = 0; j < row.length; j++) {
+                row[j] = row[j].replace(/"/g, "");
+              var element = '<div>\
+            <span class="text-muted"><i class="fa-solid fa-file-lines"></i>'+row[0]+'</span> ('+row[1]+'). <a href="'+row[3]+'"><strong>'+row[2]+'</strong></a> <em>'+row[3]+'</em>\
+          </div>\
+          <div class="d-flex m-2 ms-3">\
+            <a class="btn btn-sm btn-outline-primary mx-1" href="' + row[4]+ 'https://www.sciencedirect.com/science/article/pii/S2590123023001500/pdfft?isDTMRedir=true&download=true"><i class="fa-solid fa-file-lines"></i> PDF</a>\
+            <a class="btn btn-sm btn-outline-primary mx-1" href="' + row[5]+ 'https://scholar.googleusercontent.com/scholar.bib?q=info:wRDi-0pqYpEJ:scholar.google.com/&output=citation&scisdr=ClEJwYbGEM_1sH11jb0:AFWwaeYAAAAAZNxzlb1HUdWkcgO_-ScgdflvUpQ&scisig=AFWwaeYAAAAAZNxzlYFgtg6V-npsmOJpmhVR4Pg&scisf=4&ct=citation&cd=-1&hl=it"><i class="fa-solid fa-square-plus"></i> Cite</a>\
+            <a class="btn btn-sm btn-outline-primary mx-1" href=""><i class="fa-solid fa-code"></i> Code</a>\
+          </div><br>';
+                document.getElementById("publications_list").innerHTML += element;
+              }
+            }
+          }
+        }
+        readCSVFile();
+
+      </script>
+      <div class="container" data-aos="fade-up">
         <div class="section-title">
           <h2>Publications</h2>
           <p>Here there are some highlights of my research publications the full list is available <a href="https://scholar.google.it/citations?user=-Hu1evkAAAAJ&hl=it">here</a>.</p>
@@ -436,8 +469,21 @@
             </ul>
           </div>
         </div> -->
+        <div id="publications_list" style="font-size: 1.2;">
+          <!-- fa document -->
+          <div>
+            <span class="text-muted"><i class="fa-solid fa-file-lines"></i> Monaco S., Apiletti D.</span> (2022). <a href="https://www.sciencedirect.com/science/article/pii/S2590123023001500"><strong>Training Physics-Informed Neural Networks: one learning to rule them all?</strong></a> <em>Results in Engineering</em>
+          </div>
+          <div class="d-flex m-2 ms-3">
+            <a class="btn btn-sm btn-outline-primary mx-1" href="https://www.sciencedirect.com/science/article/pii/S2590123023001500/pdfft?isDTMRedir=true&download=true"><i class="fa-solid fa-file-lines"></i> PDF</a>
+            <a class="btn btn-sm btn-outline-primary mx-1" href="https://scholar.googleusercontent.com/scholar.bib?q=info:wRDi-0pqYpEJ:scholar.google.com/&output=citation&scisdr=ClEJwYbGEM_1sH11jb0:AFWwaeYAAAAAZNxzlb1HUdWkcgO_-ScgdflvUpQ&scisig=AFWwaeYAAAAAZNxzlYFgtg6V-npsmOJpmhVR4Pg&scisf=4&ct=citation&cd=-1&hl=it"><i class="fa-solid fa-square-plus"></i> Cite</a>
+            <a class="btn btn-sm btn-outline-primary mx-1" href=""><i class="fa-solid fa-code"></i> Code</a>
 
-        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+          </div>
+          
+        </div>
+      </section>
+        <!-- <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-app">
             <div class="portfolio-wrap">
@@ -537,12 +583,10 @@
               </div>
             </div>
           </div>
+        </div>
 
-
-          
-
-      </div>
-    </section><!-- End Publications Section -->
+      </div> -->
+    <!-- End Publications Section -->
 
     <!-- ======= Skills Section ======= -->
     <section id="teaching" class="services">
@@ -639,6 +683,111 @@
 
       </div>
     </section>
+
+    <!-- ### PRESENTATIONS ### -->
+    <!-- <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+
+      <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+        <div class="portfolio-wrap">
+          <img src="https://ars.els-cdn.com/content/image/1-s2.0-S2590123023001500-gr001.jpg" class="img-fluid" alt="">
+          <div class="portfolio-info">
+            <h4><a href="https://www.sciencedirect.com/science/article/pii/S2590123023001500">Training Physics-Informed Neural Networks: one learning to rule them all?</a></h4>
+            <h5>Monaco S., Apiletti D.</h5>
+            <p>Results in Engineering</p>
+            <div class="portfolio-links">
+              <a href="https://www.sciencedirect.com/science/article/pii/S2590123023001500" class="portfolio-details-lightbox" data-glightbox="type: external" title="Details"><i class="bx bx-link"></i></a>
+              <a href="https://www.sciencedirect.com/science/article/pii/S2590123023001500/pdfft?isDTMRedir=true&download=true" title="Downloads"><i class="bx bx-download"></i></a>
+              <a href=""
+              class="portfolio-details-lightbox" title="Cite"><i class="bx bx-bookmark-plus"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+        <div class="portfolio-wrap">
+          <img src="https://www.mdpi.com/electronics/electronics-11-02850/article_deploy/html/images/electronics-11-02850-g001.png" class="img-fluid" alt="">
+          <div class="portfolio-info">
+            <h4><a href="https://www.mdpi.com/2079-9292/11/18/2850">Theory-Guided Deep Learning Algorithms: An Experimental Evaluation</a></h4>
+            <h5>Monaco S., Apiletti D., Malnati G.</h5>
+            <p>MDPI Electronics</p>
+            <div class="portfolio-links">
+              <a href="https://www.mdpi.com/2079-9292/11/18/2850" class="portfolio-details-lightbox" data-glightbox="type: external" title="Details"><i class="bx bx-link"></i></a>
+              <a href="https://www.mdpi.com/2079-9292/11/18/2850/pdf?version=1662711483" title="Downloads"><i class="bx bx-download"></i></a>
+              <a href="" 
+              class="portfolio-details-lightbox" title="Cite"><i class="bx bx-bookmark-plus"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+        <div class="portfolio-wrap">
+          <img src="assets/img/portfolio/wildfires.png" class="img-fluid" alt="">
+          <div class="portfolio-info">
+            <h4><a href="https://dl.acm.org/doi/10.1145/3511808.3557528">A Dataset for Burned Area Delineation and Severity Estimation from Satellite Imagery</a></h4>
+            <h5>Colomba L., Farasin A., Monaco S. et al.</h5>
+            <p>2022 International Conference on Information and Knowledge Management</p>
+            <div class="portfolio-links">
+              <a href="https://dl.acm.org/doi/10.1145/3511808.3557528" class="portfolio-details-lightbox" data-glightbox="type: external" title="Details"><i class="bx bx-link"></i></a>
+              <a href="https://dl.acm.org/doi/pdf/10.1145/3511808.3557528" title="Downloads"><i class="bx bx-download"></i></a>
+              <a href="" 
+              class="portfolio-details-lightbox" title="Cite"><i class="bx bx-bookmark-plus"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+        <div class="portfolio-wrap">
+          <img src="assets/img/portfolio/cysts.jpg" class="img-fluid" alt="">
+          <div class="portfolio-info">
+            <h4><a href="https://ieeexplore.ieee.org/document/9671669">Cyst segmentation on kidney tubules by means of U-Net deep-learning models</a></h4>
+            <h5>Monaco S. et al.</h5>
+            <p>2021 IEEE International Conference on Big Data</p>
+            <div class="portfolio-links">
+              <a href="https://ieeexplore.ieee.org/document/9671669" class="portfolio-details-lightbox" data-glightbox="type: external" title="Details"><i class="bx bx-link"></i></a>
+              <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9671669&casa_token=C3WDkPPFv2YAAAAA:J16tuLqhEZO9YmCGcOOBlvnkeujBUbfhTcOTEEfgXala89oF9Ru7NNjMEplQAvMrb5VvWdDA&tag=1" title="Downloads"><i class="bx bx-download"></i></a>
+              <a href="https://scholar.googleusercontent.com/scholar.bib?q=info:qshh-tqa6NwJ:scholar.google.com/&output=citation&scisdr=CgUDvoXmEPX7yYtPQUE:AAGBfm0AAAAAZBhJWUEeCt-Bmsc27nyKbl3vKHF3ZgRd&scisig=AAGBfm0AAAAAZBhJWekffVnu934wGj1Cti0x4jjU-syE&scisf=4&ct=citation&cd=-1&hl=it" class="portfolio-details-lightbox" data-glightbox="type: external" title="Cite"><i class="bx bx-bookmark-plus"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+        <div class="portfolio-wrap">
+          <img src="https://www.mdpi.com/applsci/applsci-11-11060/article_deploy/html/images/applsci-11-11060-g005.png" class="img-fluid" alt="">
+          <div class="portfolio-info">
+            <h4><a href="https://www.mdpi.com/2076-3417/11/22/11060">Attention to Fires: Multi-Channel Deep Learning Models for Wildfire Severity Prediction</a></h4>
+            <h5>Monaco S. et al.</h5>
+            <p>Applied Sciences</p>
+            <div class="portfolio-links">
+              <a href="https://www.mdpi.com/2076-3417/11/22/11060" class="portfolio-details-lightbox" data-glightbox="type: external" title="Details"><i class="bx bx-link"></i></a>
+              <a href="https://www.mdpi.com/2076-3417/11/22/11060/pdf?version=1637581659" title="Downloads"><i class="bx bx-download"></i></a>
+              <a href="https://scholar.googleusercontent.com/scholar.bib?q=info:qshh-tqa6NwJ:scholar.google.com/&output=citation&scisdr=CgUDvoXmEPX7yYtPQUE:AAGBfm0AAAAAZBhJWUEeCt-Bmsc27nyKbl3vKHF3ZgRd&scisig=AAGBfm0AAAAAZBhJWekffVnu934wGj1Cti0x4jjU-syE&scisf=4&ct=citation&cd=-1&hl=it" class="portfolio-details-lightbox" data-glightbox="type: external" title="Cite"><i class="bx bx-bookmark-plus"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+        <div class="portfolio-wrap">
+          <img src="https://lirp.cdn-website.com/d0ca9d15/dms3rep/multi/opt/Ecologia-SEA+SOLUZIONI-Villanova+Canavese-005-1920w.jpg" class="img-fluid" alt="">
+          <div class="portfolio-info">
+            <h4><a href="https://www.scopus.com/record/display.uri?eid=2-s2.0-85130736439&origin=inward&txGid=8f7ee8cb796dd800d529a489308b48c8">Exploring waste-collection fleet data: challenges in a real-world use case from multiple data providers</a></h4>
+            <h5>Monaco S., Bethaz P., Apiletti D., Baldini F.P., Caso C., Cerquitelli T.</h5>
+            <p>2022 Workshops of the EDBT/ICDT Joint Conference,</p>
+            <div class="portfolio-links">
+              <a href="https://www.scopus.com/record/display.uri?eid=2-s2.0-85130736439&origin=inward&txGid=8f7ee8cb796dd800d529a489308b48c8" class="portfolio-details-lightbox" data-glightbox="type: external" title="Details"><i class="bx bx-link"></i></a>
+              <a href="https://scholar.googleusercontent.com/scholar.bib?q=info:qshh-tqa6NwJ:scholar.google.com/&output=citation&scisdr=CgUDvoXmEPX7yYtPQUE:AAGBfm0AAAAAZBhJWUEeCt-Bmsc27nyKbl3vKHF3ZgRd&scisig=AAGBfm0AAAAAZBhJWekffVnu934wGj1Cti0x4jjU-syE&scisf=4&ct=citation&cd=-1&hl=it" class="portfolio-details-lightbox" data-glightbox="type: external" title="Cite"><i class="bx bx-bookmark-plus"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div> -->
 
     <!-- <section id="theses" class="services">
       <div class="container" data-aos="fade-up">

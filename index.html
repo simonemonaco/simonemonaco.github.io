@@ -420,24 +420,25 @@
 
     <!-- ======= Publications Section ======= -->
     <section id="publications" class="portfolio section-bg">
+      <!-- hidden input with the file here -->
+      <input type="file" id="file-input" style="display: none;" />
       <script>
         // Open publications.csv
         // var csv is the CSV file with headers
-        function readCSVFile(){
-          var file = "/assets/publications.csv";
-          var reader = new FileReader();
-          reader.onload = function(e) {
-            var text = reader.result;
-            var data = text.split("\n");
+        const readCSVFile = async function() {
+        // function readCSVFile(){
+          var file = "https://smonaco.it/assets/publications.csv";
+          // get the file
+          let response = await fetch(file).then(response => response.text());
+          var data = response.split(/\r?\n|\r/);
 
-            for (var i = 0; i < data.length; i++) {
-              if (i == 0) {
-                var header = data[i].split(",");
-              }
-              row = data[i].split(",");
-              for (var j = 0; j < row.length; j++) {
-                row[j] = row[j].replace(/"/g, "");
-              var element = '<div>\
+          for (var i = 0; i < data.length; i++) {
+            console.log(data[i]);
+            if (i == 0) {
+              var header = data[i].split("|");
+            }
+            row = data[i].split("|");
+            var element = '<div>\
             <span class="text-muted"><i class="fa-solid fa-file-lines"></i>'+row[0]+'</span> ('+row[1]+'). <a href="'+row[3]+'"><strong>'+row[2]+'</strong></a> <em>'+row[3]+'</em>\
           </div>\
           <div class="d-flex m-2 ms-3">\
@@ -446,8 +447,6 @@
             <a class="btn btn-sm btn-outline-primary mx-1" href=""><i class="fa-solid fa-code"></i> Code</a>\
           </div><br>';
                 document.getElementById("publications_list").innerHTML += element;
-              }
-            }
           }
         }
         readCSVFile();

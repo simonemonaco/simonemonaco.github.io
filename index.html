@@ -445,7 +445,7 @@
           <div class="d-flex m-2 ms-3">\
             <a class="btn btn-sm btn-outline-primary mx-1" href="'+row[5]+'"><i class="fa-solid fa-file-lines"></i> PDF</a>\
             <a class="btn btn-sm btn-outline-primary mx-1" href="'+row[6]+'"><i class="fa-solid fa-square-plus"></i> Cite</a>';
-            if (row[6]) {
+            if (row.length > 7 & row[7] != "") {
               element += '<a class="btn btn-sm btn-outline-primary mx-1" href="'+row[7]+'"><i class="fa-solid fa-code"></i> Code</a>';
             }
             element += '\
@@ -472,7 +472,7 @@
             </ul>
           </div>
         </div> -->
-        <div id="publications_list" style="font-size: 1.2;">
+        <div id="publications_list" class="mx-4" style="font-size: 1.2;">
           <!-- fa document -->
           <!-- <div>
             <span class="text-muted"><i class="fa-solid fa-file-lines"></i> Monaco S., Apiletti D.</span> (2022). <a href="https://www.sciencedirect.com/science/article/pii/S2590123023001500"><strong>Training Physics-Informed Neural Networks: one learning to rule them all?</strong></a> <em>Results in Engineering</em>

@@ -1187,6 +1187,15 @@ section {
   }
 }
 
+.news-date{
+  font-size: 1.5em;
+  text-align: right;
+  color: #0563bb;
+  font-weight: bold;
+  border-right: #0563bb 3px solid;
+
+}
+
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
@@ -1245,4 +1254,14 @@ section {
 
 #footer .credits {
   font-size: 13px;
+}
+
+/*--------------------------------------------------------------*/
+.year {
+  color: rgba(0,0,0,.1);
+  border-top: 1px solid rgba(0,0,0,.1);
+  padding-top: 1rem;
+  margin-top: 2rem;
+  margin-bottom: -2rem;
+  text-align: right;
 }

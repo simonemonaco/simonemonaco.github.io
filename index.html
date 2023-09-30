@@ -50,6 +50,7 @@
         <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
         <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
         <li><a href="#publications" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Publications</span></a></li>
+        <li><a href="#news" class="nav-link scrollto"><i class="bx bx-news"></i> <span>News</span></a></li>
         <li><a href="#teaching" class="nav-link scrollto"><i class="bx bx-chalkboard"></i> <span>Teaching</span></a></li>
         <!-- <li><a href="#talks" class="nav-link scrollto"><i class='bx bx-slideshow'></i> <span>Talks</span></a></li> -->
         <!-- <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li> -->
@@ -415,7 +416,8 @@
         </div>
 
       </div>
-    </section><!-- End Resume Section -->
+    </section>
+    <!-- End Resume Section -->
 
     <!-- ======= Publications Section ======= -->
     <section id="publications" class="portfolio section-bg">
@@ -430,6 +432,8 @@
           // get the file
           let response = await fetch(file).then(response => response.text());
           var data = response.split(/\r?\n|\r/);
+          
+          var year = -1;
 
           for (var i = 0; i < data.length; i++) {
             console.log(data[i]);
@@ -438,10 +442,16 @@
               continue;
             }
             row = data[i].split("|");
-            var element = '<div>\
-            <span class="text-muted"><i class="fa-solid fa-file-lines"></i> '+row[0]+'</span> ('+row[1]+'). <a href="'+row[4]+'"><strong>'+row[2]+'</strong></a> <em>'+row[3]+'</em>\
+
+            var element = "";
+            if (row[1] != year) {
+              year = row[1];
+              element += "<h2 class='year'>"+year+"</h2>";
+            }
+            element += '<div style="padding-right: 7em">\
+            <span class="text-muted"><i class="fa-solid fa-file-lines"></i> '+row[0]+'</span> <a href="'+row[4]+'"><strong>'+row[2]+'</strong></a><br><em>'+row[3]+'</em><br>'+row[1]+'\
           </div>\
-          <div class="d-flex m-2 ms-3">\
+          <div class="d-flex m-2 ms-0">\
             <a class="btn btn-sm btn-outline-primary mx-1" href="'+row[5]+'"><i class="fa-solid fa-file-lines"></i> PDF</a>\
             <a class="btn btn-sm btn-outline-primary mx-1" href="'+row[6]+'"><i class="fa-solid fa-square-plus"></i> Cite</a>';
             if (row.length > 7 & row[7] != "") {
@@ -485,110 +495,44 @@
           
         </div>
       </section>
-        <!-- <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+    <!-- End Publications Section -->
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="https://ars.els-cdn.com/content/image/1-s2.0-S2590123023001500-gr001.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4><a href="https://www.sciencedirect.com/science/article/pii/S2590123023001500">Training Physics-Informed Neural Networks: one learning to rule them all?</a></h4>
-                <h5>Monaco S., Apiletti D.</h5>
-                <p>Results in Engineering</p>
-                <div class="portfolio-links">
-                  <a href="https://www.sciencedirect.com/science/article/pii/S2590123023001500" class="portfolio-details-lightbox" data-glightbox="type: external" title="Details"><i class="bx bx-link"></i></a>
-                  <a href="https://www.sciencedirect.com/science/article/pii/S2590123023001500/pdfft?isDTMRedir=true&download=true" title="Downloads"><i class="bx bx-download"></i></a>
-                  <a href=""
-                  class="portfolio-details-lightbox" title="Cite"><i class="bx bx-bookmark-plus"></i></a>
-                </div>
-              </div>
-            </div>
+
+    <!-- ======= News Section ======= -->
+    <section id="news" class="resume">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <h2>News</h2>
+        </div>
+        <div class="d-flex mb-3">
+          <div class="news-date p-2 m-2">
+            SEPT<br>
+            2023
           </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="https://www.mdpi.com/electronics/electronics-11-02850/article_deploy/html/images/electronics-11-02850-g001.png" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4><a href="https://www.mdpi.com/2079-9292/11/18/2850">Theory-Guided Deep Learning Algorithms: An Experimental Evaluation</a></h4>
-                <h5>Monaco S., Apiletti D., Malnati G.</h5>
-                <p>MDPI Electronics</p>
-                <div class="portfolio-links">
-                  <a href="https://www.mdpi.com/2079-9292/11/18/2850" class="portfolio-details-lightbox" data-glightbox="type: external" title="Details"><i class="bx bx-link"></i></a>
-                  <a href="https://www.mdpi.com/2079-9292/11/18/2850/pdf?version=1662711483" title="Downloads"><i class="bx bx-download"></i></a>
-                  <a href="" 
-                  class="portfolio-details-lightbox" title="Cite"><i class="bx bx-bookmark-plus"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/wildfires.png" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4><a href="https://dl.acm.org/doi/10.1145/3511808.3557528">A Dataset for Burned Area Delineation and Severity Estimation from Satellite Imagery</a></h4>
-                <h5>Colomba L., Farasin A., Monaco S. et al.</h5>
-                <p>2022 International Conference on Information and Knowledge Management</p>
-                <div class="portfolio-links">
-                  <a href="https://dl.acm.org/doi/10.1145/3511808.3557528" class="portfolio-details-lightbox" data-glightbox="type: external" title="Details"><i class="bx bx-link"></i></a>
-                  <a href="https://dl.acm.org/doi/pdf/10.1145/3511808.3557528" title="Downloads"><i class="bx bx-download"></i></a>
-                  <a href="" 
-                  class="portfolio-details-lightbox" title="Cite"><i class="bx bx-bookmark-plus"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="assets/img/portfolio/cysts.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4><a href="https://ieeexplore.ieee.org/document/9671669">Cyst segmentation on kidney tubules by means of U-Net deep-learning models</a></h4>
-                <h5>Monaco S. et al.</h5>
-                <p>2021 IEEE International Conference on Big Data</p>
-                <div class="portfolio-links">
-                  <a href="https://ieeexplore.ieee.org/document/9671669" class="portfolio-details-lightbox" data-glightbox="type: external" title="Details"><i class="bx bx-link"></i></a>
-                  <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9671669&casa_token=C3WDkPPFv2YAAAAA:J16tuLqhEZO9YmCGcOOBlvnkeujBUbfhTcOTEEfgXala89oF9Ru7NNjMEplQAvMrb5VvWdDA&tag=1" title="Downloads"><i class="bx bx-download"></i></a>
-                  <a href="https://scholar.googleusercontent.com/scholar.bib?q=info:qshh-tqa6NwJ:scholar.google.com/&output=citation&scisdr=CgUDvoXmEPX7yYtPQUE:AAGBfm0AAAAAZBhJWUEeCt-Bmsc27nyKbl3vKHF3ZgRd&scisig=AAGBfm0AAAAAZBhJWekffVnu934wGj1Cti0x4jjU-syE&scisf=4&ct=citation&cd=-1&hl=it" class="portfolio-details-lightbox" data-glightbox="type: external" title="Cite"><i class="bx bx-bookmark-plus"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="https://www.mdpi.com/applsci/applsci-11-11060/article_deploy/html/images/applsci-11-11060-g005.png" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4><a href="https://www.mdpi.com/2076-3417/11/22/11060">Attention to Fires: Multi-Channel Deep Learning Models for Wildfire Severity Prediction</a></h4>
-                <h5>Monaco S. et al.</h5>
-                <p>Applied Sciences</p>
-                <div class="portfolio-links">
-                  <a href="https://www.mdpi.com/2076-3417/11/22/11060" class="portfolio-details-lightbox" data-glightbox="type: external" title="Details"><i class="bx bx-link"></i></a>
-                  <a href="https://www.mdpi.com/2076-3417/11/22/11060/pdf?version=1637581659" title="Downloads"><i class="bx bx-download"></i></a>
-                  <a href="https://scholar.googleusercontent.com/scholar.bib?q=info:qshh-tqa6NwJ:scholar.google.com/&output=citation&scisdr=CgUDvoXmEPX7yYtPQUE:AAGBfm0AAAAAZBhJWUEeCt-Bmsc27nyKbl3vKHF3ZgRd&scisig=AAGBfm0AAAAAZBhJWekffVnu934wGj1Cti0x4jjU-syE&scisf=4&ct=citation&cd=-1&hl=it" class="portfolio-details-lightbox" data-glightbox="type: external" title="Cite"><i class="bx bx-bookmark-plus"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="https://lirp.cdn-website.com/d0ca9d15/dms3rep/multi/opt/Ecologia-SEA+SOLUZIONI-Villanova+Canavese-005-1920w.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4><a href="https://www.scopus.com/record/display.uri?eid=2-s2.0-85130736439&origin=inward&txGid=8f7ee8cb796dd800d529a489308b48c8">Exploring waste-collection fleet data: challenges in a real-world use case from multiple data providers</a></h4>
-                <h5>Monaco S., Bethaz P., Apiletti D., Baldini F.P., Caso C., Cerquitelli T.</h5>
-                <p>2022 Workshops of the EDBT/ICDT Joint Conference,</p>
-                <div class="portfolio-links">
-                  <a href="https://www.scopus.com/record/display.uri?eid=2-s2.0-85130736439&origin=inward&txGid=8f7ee8cb796dd800d529a489308b48c8" class="portfolio-details-lightbox" data-glightbox="type: external" title="Details"><i class="bx bx-link"></i></a>
-                  <a href="https://scholar.googleusercontent.com/scholar.bib?q=info:qshh-tqa6NwJ:scholar.google.com/&output=citation&scisdr=CgUDvoXmEPX7yYtPQUE:AAGBfm0AAAAAZBhJWUEeCt-Bmsc27nyKbl3vKHF3ZgRd&scisig=AAGBfm0AAAAAZBhJWekffVnu934wGj1Cti0x4jjU-syE&scisf=4&ct=citation&cd=-1&hl=it" class="portfolio-details-lightbox" data-glightbox="type: external" title="Cite"><i class="bx bx-bookmark-plus"></i></a>
-                </div>
-              </div>
-            </div>
+          <div class="pt-2">
+            <h4>1st european KGML workshop</h4>
+            <p>
+              On September 22 2023 I will be among the organizers of the workshop "Knowledge-Guided Machine learning" at the 2023 ECML/PKDD Conference! All the details on the workshow website <a href="https://kgml2023.github.io/">kgml2023.github.io</a>.
+            </p>
           </div>
         </div>
 
-      </div> -->
-    <!-- End Publications Section -->
+        <div class="d-flex mb-3">
+          <div class="news-date p-2 m-2">
+            MAY<br>
+            2023
+          </div>
+          <div class="pt-2">
+            <h4>Participation at EVALITA</h4>
+            <p>
+              Our solution for EVALITA 2023 GeoLingIt challenge was accepted! We will present our work at the EVALITA conference in Parma on 7-8 September 2023. 
+              All the details on the challenge website. <a href="https://sites.google.com/view/geolingit">sites.google.com/view/geolingit</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End News Section-->
 
     <!-- ======= Skills Section ======= -->
     <section id="teaching" class="services">

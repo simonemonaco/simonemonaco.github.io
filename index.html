@@ -85,9 +85,9 @@
         <div class="section-title">
           <h2>About</h2>
           <p>
-            I see myself as a physicist with a passion for exploring the intersection of science and technology through machine learning. Beyond my work, I like to perform volunteer activities, stay with friends, and keep an eye open around me. 
+            I am a physicist passionate about exploring the intersection of science and technology through machine learning. Beyond my work, I like to perform volunteer activities, stay with friends, and keep an eye open around me.
             <br>
-            As I look around the world, I am aware of the many challenges we face. Rather than simply complain, I try to take action in whatever way I can. While I don't have all the answers, I believe that each of us can make a difference by doing our small part. Although I know I cannot change the world single-handedly, I strive to do my best, and I hope that my efforts will inspire others to do the same. Together, we can work towards a better future.
+As I look around the world, I am aware of the many challenges we face. Rather than simply complain, I try to take action in whatever way I can. While I do not have all the answers, I believe that each of us can make a difference by doing our small part. Although I know I cannot change the world single-handedly, I strive to do my best, and I hope my efforts will inspire others to do the same. Together, we can work towards a better future.
           </p>
         </div>
 
@@ -451,9 +451,13 @@
             element += '<div style="padding-right: 7em">\
             <span class="text-muted"><i class="fa-solid fa-file-lines"></i> '+row[0]+'</span> <a href="'+row[4]+'"><strong>'+row[2]+'</strong></a><br><em>'+row[3]+'</em><br>'+row[1]+'\
           </div>\
-          <div class="d-flex m-2 ms-0">\
-            <a class="btn btn-sm btn-outline-primary mx-1" href="'+row[5]+'"><i class="fa-solid fa-file-lines"></i> PDF</a>\
-            <a class="btn btn-sm btn-outline-primary mx-1" href="'+row[6]+'"><i class="fa-solid fa-square-plus"></i> Cite</a>';
+          <div class="d-flex m-2 ms-0">';
+            if (row.length > 5 & row[5] != "") {
+              element += '<a class="btn btn-sm btn-outline-primary mx-1" href="'+row[5]+'"><i class="fa-solid fa-file-lines"></i> PDF</a>';
+            }
+            if (row.length > 7 & row[6] != "") {
+              element += '<a class="btn btn-sm btn-outline-primary mx-1" href="'+row[6]+'"><i class="fa-solid fa-database"></i> Dataset</a>';
+            }
             if (row.length > 7 & row[7] != "") {
               element += '<a class="btn btn-sm btn-outline-primary mx-1" href="'+row[7]+'"><i class="fa-solid fa-code"></i> Code</a>';
             }
@@ -530,6 +534,35 @@
             </p>
           </div>
         </div>
+        
+        <div class="d-flex mb-3">
+          <div class="news-date p-2 m-2">
+            SEPT<br>
+            2022
+          </div>
+          <div class="pt-2">
+            <h4>Attendance to ADBIS 2022</h4>
+            <p>
+              I presented a paper at the 26th European Conference on Advances in Databases and Information Systems (ADBIS 2022) in Turin, Italy.
+              The paper analyzed the effect of Knowledge-Guided strategies on the performance of machine learning models in some real use cases.
+            </p>
+          </div>
+        </div>
+
+        <div class="d-flex mb-3">
+          <div class="news-date p-2 m-2">
+            DEC<br>
+            2021
+          </div>
+          <div class="pt-2">
+            <h4>Attendance to IEEE BigData 2021</h4>
+            <p>
+              I presented a paper at the IEEE International Conference on Big Data (IEEE BigData 2021). 
+              The paper related to an analysis of post-fire damage detection on satellite images.
+            </p>
+          </div>
+        </div>
+
       </div>
     </section>
     <!-- End News Section-->

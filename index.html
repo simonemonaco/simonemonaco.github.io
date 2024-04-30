@@ -347,6 +347,9 @@ As I look around the world, I am aware of the many challenges we face. Rather th
               var header = data[i].split("|");
               continue;
             }
+            if (row == "") {
+                continue;
+            }
             row = data[i].split("|");
 
             var element = "";
@@ -475,6 +478,7 @@ As I look around the world, I am aware of the many challenges we face. Rather th
           <p><em>Politecnico di Torino, Turin, Italy</em></p>
           <p>
             Development of algorithms for data elaboration  for Brain Imaging and Brain Computer Interface.
+          <strong>(Supervision: Prof. Francesco Paolo Andriulli)</strong>
           </p>
         </div>
       </div>

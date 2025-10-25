@@ -96,9 +96,9 @@ As I look around the world, I am aware of the many challenges we face. Rather th
             <img src="assets/img/profile-img.jpg" class="img-fluid" alt="">
           </div>
           <div class="col-lg-8 pt-4 pt-lg-0 content">
-            <h3>Junior Researcher at PoliTO.</h3>
+            <h3>Post Doc Researcher at PoliTO.</h3>
             <p class="fst-italic">
-              I'm currently a Researcher at the Department of Control and Computer Engineering at Politecnico di Torino. My research interest relates to theory-based machine learning strategies, 
+              I'm currently a Researcher (RTD-A) at the Department of Control and Computer Engineering at Politecnico di Torino. My research interest relates to theory-based machine learning strategies, 
               i.e. the integration of data-agnostic prior knowledge to deep learning models to enhance their predictions.
             </p>
             <div class="row">
@@ -249,128 +249,47 @@ As I look around the world, I am aware of the many challenges we face. Rather th
     <!-- ======= News Section ======= -->
     <section id="news" class="resume">
       <div class="container" data-aos="fade-up">
+        <div id="news_list" class="mx-4" style="font-size: 1.2;"></div>
+
+
         <div class="section-title">
           <h2>News</h2>
         </div>
+
+        <input type="file" id="file-input" style="display: none;" />
+        <script>
+          // Open publications.csv
+          // var csv is the CSV file with headers
+          const readNewsFile = async function() {
+          // function readCSVFile(){
+            var file = "https://simonemonaco.github.io//assets/news.csv";
+            // get the file
+            let response = await fetch(file).then(response => response.text());
+            var data = response.split(/\r?\n|\r/);
+            
+            for (var i = data.length - 1; i >= 0; i--) {
+              console.log(data[i]);
+              if (i == 0) {
+                var header = data[i].split("|");
+                continue;
+              }
+              row = data[i].split("|");
+
+              var element = '<div class="d-flex mb-3">\
+                              <div class="news-date p-2 m-2">'+row[0]+' '+row[1]+'</div>\
+                              <div class="pt-2">\
+                                <h4>'+ row[2]+ '</h4>\
+                                <p>' + row[3] + '</p>\
+                              </div>\
+                            </div>';
+              
+              document.getElementById("news_list").innerHTML += element;
+            }
+          }
+          readNewsFile();
+
+        </script>
         
-        <div class="d-flex mb-3">
-          <div class="news-date p-2 m-2">
-            SEP<br>
-            2025
-          </div>
-          <div class="pt-2">
-            <h4>Starting as a Researcher at PoliTO</h4>
-            <p>
-              In September 2025 I started my position as a Researcher at the Department of Control and Computer Engineering at Politecnico di Torino. I'm very excited to start this new adventure with the people I met during my PhD!
-            </p>
-          </div>
-        </div>
-
-        <div class="d-flex mb-3">
-          <div class="news-date p-2 m-2">
-            MAR<br>
-            2025
-          </div>
-          <div class="pt-2">
-            <h4>PhD Thesis Defence</h4>
-            <p>
-              On March 31, 2025 I defended my PhD thesis titled "Theory-Guided data science models". I'm very happy to have completed this important step in my academic career!
-            </p>
-          </div>
-        </div>
-
-        <div class="d-flex mb-3">
-          <div class="news-date p-2 m-2">
-            SEPT<br>
-            2024
-          </div>
-          <div class="pt-2">
-            <h4>Talk at Cambridge University</h4>
-            <p>
-              I will present part of my research work at the University of Cambridge, UK on September 26, 2024. The talk will focus on the integration of prior knowledge in deep learning models in the Climate prediction task. More information on the talk is available <a href="https://talks.cam.ac.uk/talk/index/222046">here</a>.
-            </p>
-          </div>
-        </div>
-
-        <div class="d-flex mb-3">
-          <div class="news-date p-2 m-2">
-            AUG<br>
-            2024
-          </div>
-          <div class="pt-2">
-            <h4>Participation at KDD 2024</h4>
-            <p>
-              I will present two workshop papers at the 30th ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD 2024), from August 25 to 29, 2024 in Barcelona, Spain. Let's meet there!
-            </p>
-          </div>
-        </div>
-        <div class="d-flex mb-3">
-          <div class="news-date p-2 m-2">
-            APR<br>
-            2024
-          </div>
-          <div class="pt-2">
-            <h4>Visiting Research at Cambridge University</h4>
-            <p>
-              From April to September 2024 I will be a visiting researcher at the University of Cambridge, UK under the supervision of Prof. Pietro Liò. I will work on Neural Stochastic Differential Equations in graph domains. I'm sure it will be a great experience!
-            </p>
-          </div>
-        </div>
-
-        <div class="d-flex mb-3">
-          <div class="news-date p-2 m-2">
-            SEPT<br>
-            2023
-          </div>
-          <div class="pt-2">
-            <h4>1st european KGML workshop</h4>
-            <p>
-              On September 22 2023 I will be among the organizers of the workshop "Knowledge-Guided Machine learning" at the 2023 ECML/PKDD Conference! All the details on the workshow website <a href="https://kgml2023.github.io/">kgml2023.github.io</a>.
-            </p>
-          </div>
-        </div>
-
-        <div class="d-flex mb-3">
-          <div class="news-date p-2 m-2">
-            MAY<br>
-            2023
-          </div>
-          <div class="pt-2">
-            <h4>Participation at EVALITA</h4>
-            <p>
-              Our solution for EVALITA 2023 GeoLingIt challenge was accepted! We will present our work at the EVALITA conference in Parma on 7-8 September 2023. 
-              All the details on the challenge website. <a href="https://sites.google.com/view/geolingit">sites.google.com/view/geolingit</a>.
-            </p>
-          </div>
-        </div>
-        
-        <div class="d-flex mb-3">
-          <div class="news-date p-2 m-2">
-            SEPT<br>
-            2022
-          </div>
-          <div class="pt-2">
-            <h4>Attendance to ADBIS 2022</h4>
-            <p>
-              I presented a paper at the 26th European Conference on Advances in Databases and Information Systems (ADBIS 2022) in Turin, Italy.
-              The paper analyzed the effect of Knowledge-Guided strategies on the performance of machine learning models in some real use cases.
-            </p>
-          </div>
-        </div>
-
-        <div class="d-flex mb-3">
-          <div class="news-date p-2 m-2">
-            DEC<br>
-            2021
-          </div>
-          <div class="pt-2">
-            <h4>Attendance to IEEE BigData 2021</h4>
-            <p>
-              I presented a paper at the IEEE International Conference on Big Data (IEEE BigData 2021). 
-              The paper related to an analysis of post-fire damage detection on satellite images.
-            </p>
-          </div>
-        </div>
 
       </div>
     </section>
@@ -383,7 +302,7 @@ As I look around the world, I am aware of the many challenges we face. Rather th
       <script>
         // Open publications.csv
         // var csv is the CSV file with headers
-        const readCSVFile = async function() {
+        const readPapersFile = async function() {
         // function readCSVFile(){
           var file = "https://simonemonaco.github.io//assets/publications.csv";
           // get the file
@@ -423,7 +342,7 @@ As I look around the world, I am aware of the many challenges we face. Rather th
             document.getElementById("publications_list").innerHTML += element;
           }
         }
-        readCSVFile();
+        readPapersFile();
 
       </script>
       <div class="container" data-aos="fade-up">

@@ -24,7 +24,8 @@
     "title": "Composable Sparse Subnetworks via Maximum-Entropy Principle",
     "venue": "International Conference on Learning Representations 2026",
     "link": "https://proceedings.iclr.cc/paper_files/paper/2026/file/5a966a8d451fae43806ac3c22d13c3ad-Paper-Conference.pdf",
-    "pdf": "https://proceedings.iclr.cc/paper_files/paper/2026/file/5a966a8d451fae43806ac3c22d13c3ad-Paper-Conference.pdf"
+    "pdf": "https://proceedings.iclr.cc/paper_files/paper/2026/file/5a966a8d451fae43806ac3c22d13c3ad-Paper-Conference.pdf",
+    "code": "https://github.com/FrancescoCaso/Composable-Sparse-Subnetworks-MaxEnt"
   },
   {
     "selected": true,
@@ -36,23 +37,6 @@
   },
   {
     "selected": true,
-    "authors": "Monaco S., Monaco L. et al.",
-    "year": 2025,
-    "title": "Quantify production planning efficiency through predictive modeling in manufacturing systems",
-    "venue": "Computers & Geosciences",
-    "link": "https://www.sciencedirect.com/science/article/pii/S0098300425001426"
-  },
-  {
-    "selected": true,
-    "authors": "Monaco S., Petrosino L., Xinaris C., Apiletti D.",
-    "year": 2024,
-    "title": "Tandem: a Confidence-based Approach for Precise Medical Image Segmentation",
-    "venue": "Computers & Industrial Engineering",
-    "link": "https://www.sciencedirect.com/science/article/pii/S0360835225000658",
-    "pdf": "https://pdf.sciencedirectassets.com/craft/capi/cfts/init?s=1800&p=%2F271420%2F1-s2.0-S0360835224X00145%2F1-s2.0-S0360835225000658%2Fmain.pdf"
-  },
-  {
-    "selected": true,
     "authors": "Monaco S., Bussola N., Buttò S. et al.",
     "year": 2024,
     "title": "AI models for automated segmentation of engineered polycystic kidney tubules",
@@ -60,13 +44,6 @@
     "link": "https://www.nature.com/articles/s41598-024-52677-1",
     "pdf": "https://www.nature.com/articles/s41598-024-52677-1.pdf",
     "code": "https://github.com/simone7monaco/auto-cysts-segmentation"
-  },
-  {
-    "selected": true,
-    "authors": "Monaco S., Barresi S., Apiletti D.",
-    "year": 2023,
-    "title": "Lorentz-invariant augmentation for high-energy physics deep learning models",
-    "venue": "ECML-PKDD Workshops proceedings"
   },
   {
     "selected": true,
@@ -97,14 +74,6 @@
     "link": "https://dl.acm.org/doi/10.1145/3511808.3557528",
     "pdf": "https://dl.acm.org/doi/pdf/10.1145/3511808.3557528",
     "dataset": "https://zenodo.org/records/6597139/"
-  },
-  {
-    "selected": false,
-    "authors": "Monaco S., Bussola N., Buttò S., Sona D., Apiletti D. et al.",
-    "year": 2021,
-    "title": "Cyst segmentation on kidney tubules by means of U-Net deep-learning models",
-    "venue": "IEEE International Conference on Big Data (Big Data)",
-    "link": "https://ieeexplore.ieee.org/document/9671669"
   },
   {
     "selected": false,

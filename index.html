@@ -403,59 +403,47 @@ As I look around the world, I am aware of the many challenges we face. Rather th
       <!-- hidden input with the file here -->
       <input type="file" id="file-input" style="display: none;" />
       <script>
-        // Open publications.csv
-        // var csv is the CSV file with headers
-        const readCSVFile = async function() {
-        // function readCSVFile(){
-          var file = "assets/publications.csv";
-          // get the file
-          let response = await fetch(file).then(response => response.text());
-          var data = response.split(/\r?\n|\r/);
-          
-          var year = -1;
+        // Load publications from JSON (assets/publications.json)
+        const loadPublications = async function() {
+          try {
+            const file = "assets/publications.json";
+            let response = await fetch(file);
+            if (!response.ok) return;
+            let data = await response.json();
 
-          for (var i = 0; i < data.length; i++) {
-            console.log(data[i]);
-            if (i == 0) {
-              var header = data[i].split("|");
-              continue;
-            }
-            row = data[i].split("|");
-            // create a dictionary with header as key and row as value
-            var row_dict = {};
-            for (var j = 0; j < header.length; j++) {
-              row_dict[header[j]] = row[j];
-            }
+            // keep only selected (default: selected === undefined or true)
+            data = data.filter(p => p.selected !== false);
 
-            if (row_dict["selected"] == "0") {
-              // "selected" flag
-              continue;
-            }
+            // sort by year descending
+            data.sort((a,b) => (b.year || 0) - (a.year || 0));
 
-            var element = "";
-            if (row_dict["year"] != year) {
-              year = row_dict["year"];
-              element += "<h2 class='year'>"+year+"</h2>";
+            let currentYear = null;
+            for (const pub of data) {
+              if (pub.year != currentYear) {
+                currentYear = pub.year;
+                document.getElementById("publications_list").innerHTML += `<h2 class='year'>${currentYear}</h2>`;
+              }
+
+              let element = `<div style="padding-right: 7em">`;
+              element += `<span class="text-muted"><i class="fa-solid fa-file-lines"></i> ${pub.authors || ''}</span> `;
+              if (pub.link) element += `<a href="${pub.link}"><strong>${pub.title || ''}</strong></a>`;
+              else element += `<strong>${pub.title || ''}</strong>`;
+              element += `<br><em>${pub.venue || ''}</em><br>${pub.year || ''}</div>`;
+
+              element += `<div class="d-flex m-2 ms-0">`;
+              if (pub.pdf) element += `<a class="btn btn-sm btn-outline-primary mx-1" href="${pub.pdf}"><i class="fa-solid fa-file-lines"></i> PDF</a>`;
+              if (pub.dataset) element += `<a class="btn btn-sm btn-outline-primary mx-1" href="${pub.dataset}"><i class="fa-solid fa-database"></i> Dataset</a>`;
+              if (pub.code) element += `<a class="btn btn-sm btn-outline-primary mx-1" href="${pub.code}"><i class="fa-solid fa-code"></i> Code</a>`;
+              if (pub.demo) element += `<a class="btn btn-sm btn-outline-primary mx-1" href="${pub.demo}"><i class="fa-solid fa-play"></i> Demo</a>`;
+              element += `</div><br>`;
+
+              document.getElementById("publications_list").innerHTML += element;
             }
-            element += '<div style="padding-right: 7em">\
-            <span class="text-muted"><i class="fa-solid fa-file-lines"></i> '+row_dict["authors"]+'</span> <a href="'+row_dict["link"]+'"><strong>'+row_dict["title"]+'</strong></a><br><em>'+row_dict["venue"]+'</em><br>'+row_dict["year"]+'\
-          </div>\
-          <div class="d-flex m-2 ms-0">';
-            if (row.length > 5 & row[5] != "") {
-              element += '<a class="btn btn-sm btn-outline-primary mx-1" href="'+row_dict["pdf"]+'"><i class="fa-solid fa-file-lines"></i> PDF</a>';
-            }
-            if (row.length > 7 & row[6] != "") {
-              element += '<a class="btn btn-sm btn-outline-primary mx-1" href="'+row_dict["dataset"]+'"><i class="fa-solid fa-database"></i> Dataset</a>';
-            }
-            if (row.length > 7 & row[7] != "") {
-              element += '<a class="btn btn-sm btn-outline-primary mx-1" href="'+row_dict["code"]+'"><i class="fa-solid fa-code"></i> Code</a>';
-            }
-            element += '\
-          </div><br>';
-            document.getElementById("publications_list").innerHTML += element;
+          } catch (err) {
+            console.error('Failed loading publications.json', err);
           }
         }
-        readCSVFile();
+        loadPublications();
 
       </script>
       <div class="container" data-aos="fade-up">
